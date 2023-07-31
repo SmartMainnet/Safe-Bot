@@ -18,9 +18,9 @@ bot.onText(/\/start/, (msg, match) => {
   if (isPrivateChat) {
     const startMessage = (
       "🤝 Welcome to Monsta Safe Bot!\n" +
-      "🦺 Audit and Trust Report for BSC Contracts!\n" +
+      "🦺 Audit and Trust Report for BSC/ETH Contracts!\n" +
       "➡️ Promote, FAQ and Instructions:\n@MonstaSafeChannel\n\n" +  
-      "Enter BSC Contract Address for Audit and Trust Report!\n" +
+      "Enter BSC/ETH Contract Address for Audit and Trust Report!\n" +
       "Example: `0xbCe62F8936B1AFF0A57ceB3D1031486f1d61d095`"
     )
     
@@ -79,7 +79,6 @@ const audit = async (chatId, msgId, address) => {
         const tokenName = resGoPlus.data.result[address].token_name
         const tokenSymbol = resGoPlus.data.result[address].token_symbol
         const totalSupply = resGoPlus.data.result[address].total_supply.replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1,')
-        const holderCount = resGoPlus.data.result[address].holder_count
 		
         const buyTaxValue = resGoPlus.data.result[address].buy_tax * 100
         const sellTaxValue = resGoPlus.data.result[address].sell_tax * 100
@@ -119,9 +118,8 @@ const audit = async (chatId, msgId, address) => {
           chatId,
           `🏷 *Name:* ${tokenName}\n` +
           `⭐ *Symbol:* ${tokenSymbol}\n` +
-          `🔗 *Network:* ${isContractAddressBNB ? 'BNB' : 'ETH'}\n` +
+          `🔗 *Network:* ${isContractAddressBNB ? 'BSC' : 'ETH'}\n` +
           `➡️ *Total Supply:* ${totalSupply}\n` +
-          `👥 *Holders:* ${holderCount}\n` +
           `💰 *Tax:* Buy ${buyTax} | Sell ${sellTax}\n` +
           `📄 *Contract Verified:* ${isContractVerified}\n` +
           `🔁 *Renounced Ownership:* ${isRenounced}\n\n` +
@@ -165,13 +163,13 @@ const audit = async (chatId, msgId, address) => {
         )
       } else {
         bot.sendMessage(chatId,
-          'BSC Contracts only!',
+          '⚠️ BSC/ETH Contracts only!',
           { reply_to_message_id: msgId }
         )
       }
     } else {
       bot.sendMessage(chatId,
-        'No BSC Contract Address entered!',
+        '⚠️ No BSC/ETH Contract Address entered!',
         { reply_to_message_id: msgId }
       )
     }
@@ -182,7 +180,6 @@ const audit = async (chatId, msgId, address) => {
 
 bot.on('message', async msg => {
   try {
-    // Check if the message contains text and is not null
     if (msg.text && typeof msg.text === 'string') {
       const text = msg.text.toLowerCase()
       const chatId = msg.chat.id

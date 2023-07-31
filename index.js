@@ -150,11 +150,11 @@ const audit = async (chatId, msgId, address) => {
               inline_keyboard: [
                 [
                   { text: 'Audit', url: `https://gopluslabs.io/token-security/${isContractAddressBNB ? 56 : 1}/${address}` },
-                  { text: 'Contract', url: `https://bscscan.com/token/${address}#balances` }
+                  { text: 'Contract', url: `https://${isContractAddressBNB ? 'bscscan.com' : 'etherscan.io'}/token/${address}` }
                 ],
                 [
                   { text: 'Buy', url: `https://app.1inch.io/#/${isContractAddressBNB ? 56 : 1}/simple/swap/${isContractAddressBNB ? 'BNB' : 'ETH'}/${address}` },
-                  { text: 'Chart', url: `https://poocoin.app/tokens/${address}` }
+                  { text: 'Chart', url: `https://${isContractAddressBNB ? 'poocoin.app/tokens' : 'coingecko.com/en/coins'}/${address}` }
                 ],
                 [{ text: buttonText, url: url }]
               ]

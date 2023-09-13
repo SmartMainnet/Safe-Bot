@@ -1,5 +1,5 @@
 import 'dotenv/config'
-import checkAddress from '../checkAddress.js'
+import audit from '../audit/index.js'
 import * as texts from './texts.js'
 import * as db from '../database/db.js'
 
@@ -55,7 +55,7 @@ export default async bot => {
             { parse_mode: 'MARKDOWN' }
           )
         } else if (!isGroup) {
-          await checkAddress(bot, msg)
+          await audit(bot, msg)
         }
       }
     } catch (err) {

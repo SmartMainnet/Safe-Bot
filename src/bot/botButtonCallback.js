@@ -1,5 +1,5 @@
-import chains from "../chains.js"
-import audit from "../audit.js"
+import chains from "../audit/getChains.js"
+import audit from "../audit/startAudit.js"
 
 export default async bot => {
   bot.on('callback_query', async callback => {

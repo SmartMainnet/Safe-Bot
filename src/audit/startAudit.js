@@ -1,11 +1,11 @@
 import axios from 'axios'
-import * as db from './database/db.js'
+import * as db from '../database/db.js'
 
 export default async (bot, msg, address, chain) => {
   const chatId = msg.chat.id
 
   try {
-    const botMsg = await bot.sendMessage(chatId, 'Checking...')
+    const botMsg = await bot.sendMessage(chatId, 'Audit...')
     const botMsgId = botMsg.message_id
 
     const resGoPlus = await axios.get(`https://api.gopluslabs.io/api/v1/token_security/${chain.id}?contract_addresses=${address}`)

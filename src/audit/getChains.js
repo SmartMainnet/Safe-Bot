@@ -56,5 +56,5 @@ export default async address => {
     }
   ]
 
-  return chains.filter(chain => chain.status)
+  return chains
 }

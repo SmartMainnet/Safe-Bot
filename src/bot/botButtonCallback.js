@@ -3,14 +3,14 @@ import audit from "../audit/startAudit.js"
 
 export default async bot => {
   bot.on('callback_query', async callback => {
-    const msg = callback.message
+    const msg = callback.message.reply_to_message
+    const botMsgId = callback.message.message_id
     const chainName = callback.data.split(' ')[0]
     const address = callback.data.split(' ')[1]
     const chatId = msg.chat.id
-    const msgId = msg.message_id
     const activeChains = (await chains(address)).filter(chain => chain.name === chainName)
 
-    bot.deleteMessage(chatId, msgId)
+    bot.deleteMessage(chatId, botMsgId)
 
     try {
       audit(bot, msg, address, ...activeChains)

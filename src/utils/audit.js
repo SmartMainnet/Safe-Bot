@@ -1,13 +1,12 @@
 import axios from 'axios'
-import * as db from '../database/db.js'
+// import db from '../database/db.js'
 
-export default async (bot, msg, address, chain) => {
-  const chatId = msg.chat.id
+export default async ctx => {
+  const address = ctx.address
+  const chain = ctx.chain
+  const msgWait = ctx.msgWait
 
   try {
-    const botMsg = await bot.sendMessage(chatId, 'Audit...')
-    const botMsgId = botMsg.message_id
-
     const resGoPlus = await axios.get(`https://api.gopluslabs.io/api/v1/token_security/${chain.id}?contract_addresses=${address}`)
 
     const goPlus = name => parseInt(resGoPlus.data.result[address][name]) === 1
@@ -41,9 +40,10 @@ export default async (bot, msg, address, chain) => {
     const isAntiWhaleModifiable = isContractVerified ? (goPlus('anti_whale_modifiable') ? yes : no) : unknown
     const isBackOwner = isContractVerified ? (goPlus('can_take_back_ownership') ? yes : no) : unknown
 
-    bot.deleteMessage(chatId, botMsgId)
-    bot.sendMessage(
-      chatId,
+    ctx.telegram.editMessageText(
+      msgWait.chat.id,
+      msgWait.message_id,
+      undefined,
       `🏷 Name: *${tokenName}*\n` +
       `💸 Symbol: *${tokenSymbol}*\n` +
       `🔗 Network: *${chain.name}*\n` +
@@ -83,7 +83,7 @@ export default async (bot, msg, address, chain) => {
       }
     )
 
-    await db.successfulCall(msg)
+    // await db.successfulCall(msg)
   } catch (err) {
     console.log(err)
   }

@@ -1,17 +1,19 @@
 import 'dotenv/config'
-import TelegramApi from 'node-telegram-bot-api'
+import { Telegraf } from 'telegraf'
 import {
-  botStart,
-  botSetCommands,
-  botButtonCallback
-} from './bot/index.js'
+  startComposer,
+  helpComposer,
+  messageComposer,
+  callbackComposer
+} from './composer/index.js'
 
 const { BOT_TOKEN } = process.env
 
-const bot = new TelegramApi(BOT_TOKEN, { polling: true })
+const bot = new Telegraf(BOT_TOKEN)
 
-botStart(bot)
+bot.use(startComposer)
+bot.use(helpComposer)
+bot.use(messageComposer)
+bot.use(callbackComposer)
 
-botSetCommands(bot)
-
-botButtonCallback(bot)
+bot.launch()

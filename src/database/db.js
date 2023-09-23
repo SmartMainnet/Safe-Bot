@@ -10,7 +10,7 @@ client.connect()
 const db = client.db('safe-bot')
 const users = db.collection('users')
 
-export const createUser = async msg => {
+const createUser = async msg => {
   await users.findOne({ id: msg.chat.id }).then(async res => {
     if (!res) {
       await users.insertOne({
@@ -24,7 +24,7 @@ export const createUser = async msg => {
   })
 }
 
-export const successfulCall = async msg => {
+const successfulCall = async msg => {
   await users.updateOne({ id: msg.chat.id },
     {
       $set: {
@@ -45,7 +45,7 @@ export const successfulCall = async msg => {
   )
 }
 
-export const badCall = async msg => {
+const badCall = async msg => {
   await users.updateOne({ id: msg.chat.id },
     {
       $set: {
@@ -64,4 +64,10 @@ export const badCall = async msg => {
       }
     }
   )
+}
+
+export default {
+  createUser,
+  successfulCall,
+  badCall
 }

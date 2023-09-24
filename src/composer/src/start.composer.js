@@ -2,7 +2,7 @@ import { Composer } from 'telegraf'
 
 const composer = new Composer()
 
-export default composer.command('start', async ctx => {
+export const startComposer = composer.command('start', async ctx => {
   try {
     const msg = ctx.update.message
 

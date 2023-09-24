@@ -2,7 +2,7 @@ import { Composer } from 'telegraf'
 
 const composer = new Composer()
 
-export default composer.command('help', async ctx => {
+export const helpComposer = composer.command('help', async ctx => {
   try {
     await ctx.replyWithPhoto(
       { source: 'src/img/Example.png' },

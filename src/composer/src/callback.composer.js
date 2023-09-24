@@ -4,7 +4,7 @@ import audit from '../../utils/audit.js'
 
 const composer = new Composer()
 
-export default composer.action(async (data, ctx) => {
+export const callbackComposer = composer.action(async (data, ctx) => {
   try {
     const address = data.split(' ')[1]
     const chainName = data.split(' ')[0]

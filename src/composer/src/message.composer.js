@@ -4,7 +4,7 @@ import audit from '../../utils/audit.js'
 
 const composer = new Composer()
 
-export default composer.on('text',
+export const messageComposer = composer.on('text',
   checkAddress,
   checkChains,
   ctx => audit(ctx)

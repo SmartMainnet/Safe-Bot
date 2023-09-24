@@ -1,6 +1,6 @@
 import getChains from '../../utils/getChains.js'
 
-const checkChainsMiddleware = async (ctx, next) => {
+export const checkChains = async (ctx, next) => {
   const msgWait = await ctx.reply('Checking...')
 
   try {
@@ -42,9 +42,5 @@ const checkChainsMiddleware = async (ctx, next) => {
     }
   } catch (e) {
     console.log(e)
-  } finally {
-    // ctx.telegram.deleteMessage(msgWait.chat.id, msgWait.message_id)
   }
 }
-
-export default checkChainsMiddleware

@@ -1,11 +1,4 @@
-import startComposer from './src/start.composer.js'
-import helpComposer from './src/help.composer.js'
-import messageComposer from './src/message.composer.js'
-import callbackComposer from './src/callback.composer.js'
-
-export {
-  startComposer,
-  helpComposer,
-  messageComposer,
-  callbackComposer
-}
+export * from './src/start.composer.js'
+export * from './src/help.composer.js'
+export * from './src/message.composer.js'
+export * from './src/callback.composer.js'

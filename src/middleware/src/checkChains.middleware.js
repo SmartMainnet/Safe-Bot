@@ -1,7 +1,7 @@
 import getChains from '../../utils/getChains.js'
 
 export const checkChains = async (ctx, next) => {
-  const msgWait = await ctx.reply('Checking...')
+  const msgWait = await ctx.reply(ctx.i18n.t('checking'))
 
   try {
     const message_id = ctx.update.message.message_id
@@ -17,7 +17,7 @@ export const checkChains = async (ctx, next) => {
         msgWait.chat.id,
         msgWait.message_id,
         undefined,
-        'Audit...'
+        ctx.i18n.t('audit')
       )
       next()
     } else if(activeChains.length > 1) {
@@ -25,7 +25,7 @@ export const checkChains = async (ctx, next) => {
         msgWait.chat.id,
         msgWait.message_id,
         undefined,
-        'Choose which network to audit the token on',
+        ctx.i18n.t('chain_selection'),
         {
           parse_mode: 'MARKDOWN',
           reply_to_message_id: message_id,
@@ -38,7 +38,7 @@ export const checkChains = async (ctx, next) => {
         }
       )
     } else {
-      ctx.reply('⚠️ Only contract addresses!')
+      ctx.reply(ctx.i18n.t('warning'))
     }
   } catch (e) {
     console.log(e)

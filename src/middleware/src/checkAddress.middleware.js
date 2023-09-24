@@ -9,7 +9,7 @@ export const checkAddress = async (ctx, next) => {
     if (isAddress) {
       next()
     } else {
-      ctx.reply('⚠️ Only contract addresses!')
+      ctx.reply(ctx.i18n.t('warning'))
     }
   } catch (e) {
     console.log(e)

@@ -46,7 +46,7 @@ export default async ctx => {
       undefined,
       `🏷 Name: *${tokenName}*\n` +
       `💸 Symbol: *${tokenSymbol}*\n` +
-      `🔗 Network: *${chain.name}*\n` +
+      `🔗 Chain: *${chain.name}*\n` +
       `🪙 Total Supply: *${totalSupply}*\n` +
       `💰 Tax: *Buy ${buyTax} | Sell ${sellTax}*\n` +
       `📄 Contract Verified: *${isContractVerified ? 'Yes' : 'No ⚠️'}*\n` +

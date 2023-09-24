@@ -10,7 +10,7 @@ export const callbackComposer = composer.action(async (data, ctx) => {
     const chainName = data.split(' ')[0]
     const chain = chains.filter(chain => chain.name === chainName)[0]
     
-    ctx.editMessageText('Audit...')
+    ctx.editMessageText(ctx.i18n.t('audit'))
     ctx.msgWait = ctx.update.callback_query.message
     ctx.address = address
     ctx.chain = chain

@@ -2,7 +2,7 @@ import { Composer } from 'telegraf'
 
 const composer = new Composer()
 
-export const infoComposer = composer.command('info', async ctx => {
+export const infoCommand = composer.command('info', async ctx => {
   try {
     await ctx.reply(
       ctx.i18n.t('info'),

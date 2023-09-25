@@ -1,3 +1,3 @@
-export * from './src/createUser.database.js'
-export * from './src/successfulCall.database.js'
-export * from './src/badCall.database.js'
+export * from './methods/createUser.database.js'
+export * from './methods/successfulCall.database.js'
+export * from './methods/badCall.database.js'

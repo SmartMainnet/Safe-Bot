@@ -12,9 +12,32 @@ chain_selection: |
   Choose which chain to audit the token in
 warning: |
   ⚠️ Only contract addresses!
+limit: |
+  Rate limit exceeded
 checking: |
   Checking...
 audit: |
   Audit...
-limit: |
-  Rate limit exceeded
+audit_result: |
+  🏷 Name: *${token.res['token_name']}*
+  💸 Symbol: *${token.res['token_symbol']}*
+  🔗 Chain: *${token.chain}*
+  🪙 Total Supply: *${token.totalSupply}*
+  💰 Tax: *Buy ${token.buyTax} | Sell ${token.sellTax}*
+  📄 Contract Verified: *${token.res['is_open_source'] ? 'Yes' : 'No ⚠️'}*
+  🔁 Renounced Ownership: *${token.isRenounced ? 'Yes' : 'No'}*
+
+  *Audit Report:*
+  ${+token.res['can_take_back_ownership'] ? '⚠️' : '✅'} Regain Ownership: *${+token.res['can_take_back_ownership'] ? 'Yes' : 'No'}*
+  ${+token.res['hidden_owner'] ? '⚠️' : '✅'} Hidden Ownership: *${+token.res['hidden_owner'] ? 'Yes' : 'No'}*
+  ${+token.res['is_proxy'] ? '⚠️' : '✅'} Proxy Contract: *${+token.res['is_proxy'] ? 'Yes' : 'No'}*
+  ️${+token.res['is_anti_whale'] ? '⚠️' : '✅'} Anti Whale: *${+token.res['is_anti_whale'] ? 'Yes' : 'No'}*
+  ️${+token.res['anti_whale_modifiable'] ? '⚠️' : '✅'} Anti Whale Modifiable: *${+token.res['anti_whale_modifiable'] ? 'Yes' : 'No'}*
+  ${+token.res['is_blacklisted'] ? '⚠️' : '✅'} Blacklist: *${+token.res['is_blacklisted'] ? 'Yes' : 'No'}*
+  ${+token.res['is_mintable'] ? '⚠️' : '✅'} Mintable: *${+token.res['is_mintable'] ? 'Yes' : 'No'}*
+  ${+token.res['trading_cooldown'] ? '⚠️' : '✅'} Trading Cooldown: *${+token.res['trading_cooldown'] ? 'Yes' : 'No'}*
+  ${+token.res['transfer_pausable'] ? '⚠️' : '✅'} Trading Pausable: *${+token.res['transfer_pausable'] ? 'Yes' : 'No'}*
+  ${+token.res['slippage_modifiable'] ? '⚠️' : '✅'} Tax Modifiable: *${+token.res['slippage_modifiable'] ? 'Yes' : 'No'}*
+  ${+token.res['is_whitelisted'] ? '⚠️' : '✅'} Whitelist: *${+token.res['is_whitelisted'] ? 'Yes' : 'No'}*
+
+  ❗️*NOT FINANCIAL ADVICE*❗️

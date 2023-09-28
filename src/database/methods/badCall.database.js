@@ -6,11 +6,8 @@ export const badCall = async msg => {
       $set: {
         username: msg.from.username,
         first_name: msg.from.first_name,
-        last_name: msg.from.last_name,
-        date_last_bad_call: new Date(),
-        last_bad_call: msg.text
+        last_name: msg.from.last_name
       },
-      $inc: { number_bad_calls: 1 },
       $push: {
         bad_calls: {
           call: msg.text,

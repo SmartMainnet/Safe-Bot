@@ -6,11 +6,8 @@ export const successfulCall = async msg => {
       $set: {
         username: msg.from.username,
         first_name: msg.from.first_name,
-        last_name: msg.from.last_name,
-        date_last_call: new Date(),
-        last_call: msg.text.toLowerCase()
+        last_name: msg.from.last_name
       },
-      $inc: { number_calls: 1 },
       $push: {
         calls: {
           call: msg.text.toLowerCase(),

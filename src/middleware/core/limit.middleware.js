@@ -6,4 +6,4 @@ const limitConfig = {
   onLimitExceeded: ctx => ctx.reply(ctx.i18n.t('limit'))
 }
 
-export const limit = rateLimit(limitConfig)
+export const limitMiddleware = rateLimit(limitConfig)

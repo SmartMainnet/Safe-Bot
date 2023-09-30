@@ -3,7 +3,7 @@ import { Telegraf } from 'telegraf'
 import {
   i18nMiddleware,
   limitMiddleware
-} from './middleware/index.js'
+} from './middlewares/index.js'
 import {
   startCommand,
   infoCommand,
@@ -11,7 +11,7 @@ import {
   addressMessage,
   textMessage,
   buttonCallback
-} from './composer/index.js'
+} from './composers/index.js'
 import './database/connect/db.connect.js'
 
 const { BOT_TOKEN } = process.env

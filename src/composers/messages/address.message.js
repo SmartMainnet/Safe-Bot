@@ -1,5 +1,5 @@
 import { Composer } from 'telegraf'
-import { checkChains, checkMember } from '../../middleware/index.js'
+import { checkChains, checkMember } from '../../middlewares/index.js'
 import audit from '../../utils/audit.js'
 
 const composer = new Composer()

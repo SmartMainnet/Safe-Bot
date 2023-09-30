@@ -10,6 +10,7 @@ import {
   textMessage,
   buttonCallback
 } from './composer/index.js'
+import './database/connect/db.connect.js'
 
 const { BOT_TOKEN } = process.env
 

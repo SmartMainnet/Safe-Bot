@@ -1,13 +1,9 @@
 import 'dotenv/config'
-import { MongoClient } from 'mongodb'
+import mongoose from 'mongoose'
 
 const { MONGODB_URI } = process.env
 
-const client = new MongoClient(MONGODB_URI)
-
-client.connect()
-
-const db = client.db('safe-bot')
-const users = db.collection('users')
-
-export default users
+mongoose
+  .connect(MONGODB_URI)
+  .then(() => console.log('Connected to MongoDB'))
+  .catch(e => console.log(`DB connection error: ${e}`))

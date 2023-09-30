@@ -1,11 +1,12 @@
 import axios from 'axios'
-// import db from '../database/db.js'
+import { newCall } from '../database/index.js'
 
 export default async ctx => {
   try {
     const msgWait = ctx.msgWait
     const address = ctx.address
     const chain = ctx.chain
+    const from = ctx.from
 
     const resGoPlus = await axios.get(`https://api.gopluslabs.io/api/v1/token_security/${chain.id}?contract_addresses=${address}`)
     const res = resGoPlus.data.result[address]
@@ -51,7 +52,7 @@ export default async ctx => {
       }
     )
 
-    // await db.successfulCall(msg)
+    newCall(from.id, address, true)
   } catch (e) {
     console.log(e)
   }

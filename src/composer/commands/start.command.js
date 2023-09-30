@@ -1,9 +1,11 @@
 import { Composer } from 'telegraf'
+import { createUser } from '../../database/index.js'
 
 const composer = new Composer()
 
 export const startCommand = composer.command('start', async ctx => {
   try {
+    const from = ctx.update.message.from
     await ctx.reply(ctx.i18n.t('welcome', { ctx }))
 
     await ctx.reply(
@@ -18,6 +20,8 @@ export const startCommand = composer.command('start', async ctx => {
         parse_mode: 'MARKDOWN'
       }
     )
+
+    createUser(from)
   } catch (e) {
     console.log(e)
   }

@@ -1,18 +1,19 @@
 import getChains from '../../utils/getChains.js'
 
 export const checkChains = async (ctx, next) => {
-  const msgWait = await ctx.reply(ctx.i18n.t('checking'))
-
   try {
+    const msgWait = await ctx.reply(ctx.i18n.t('checking'))
     const message_id = ctx.update.message.message_id
+    const from = ctx.update.message.from
     const address = ctx.update.message.text.toLowerCase()
     const chains = await getChains(address)
     const activeChains = chains.filter(chain => chain.status)
 
     if (activeChains.length === 1) {
+      ctx.msgWait = msgWait
+      ctx.from = from
       ctx.address = address
       ctx.chain = activeChains[0]
-      ctx.msgWait = msgWait
       ctx.telegram.editMessageText(
         msgWait.chat.id,
         msgWait.message_id,

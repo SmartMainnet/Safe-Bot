@@ -1,3 +1,4 @@
+import { checkChainsInlineKeyboard } from '../../keyboards/index.js'
 import getChains from '../../utils/getChains.js'
 
 export const checkChains = async (ctx, next) => {
@@ -6,14 +7,13 @@ export const checkChains = async (ctx, next) => {
     const message_id = ctx.update.message.message_id
     const from = ctx.update.message.from
     const address = ctx.update.message.text.toLowerCase()
-    const chains = await getChains(address)
-    const activeChains = chains.filter(chain => chain.status)
+    const chains = (await getChains(address)).filter(chain => chain.status)
 
-    if (activeChains.length === 1) {
+    if (chains.length === 1) {
       ctx.msgWait = msgWait
       ctx.user = from
       ctx.address = address
-      ctx.chain = activeChains[0]
+      ctx.chain = chains[0]
       ctx.telegram.editMessageText(
         msgWait.chat.id,
         msgWait.message_id,
@@ -21,7 +21,7 @@ export const checkChains = async (ctx, next) => {
         ctx.i18n.t('audit')
       )
       next()
-    } else if(activeChains.length > 1) {
+    } else if(chains.length > 1) {
       ctx.telegram.editMessageText(
         msgWait.chat.id,
         msgWait.message_id,
@@ -31,11 +31,7 @@ export const checkChains = async (ctx, next) => {
           parse_mode: 'MARKDOWN',
           reply_to_message_id: message_id,
           disable_web_page_preview: true,
-          reply_markup: JSON.stringify({
-            inline_keyboard: activeChains.map(chain => [
-              { text: chain.name, callback_data: `${chain.name} ${address}` }
-            ])
-          })
+          reply_markup: checkChainsInlineKeyboard(chains, address)
         }
       )
     } else {

@@ -11,7 +11,7 @@ export const checkChains = async (ctx, next) => {
 
     if (activeChains.length === 1) {
       ctx.msgWait = msgWait
-      ctx.from = from
+      ctx.user = from
       ctx.address = address
       ctx.chain = activeChains[0]
       ctx.telegram.editMessageText(

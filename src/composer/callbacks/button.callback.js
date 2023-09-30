@@ -13,7 +13,7 @@ export const buttonCallback = composer.action(async (data, ctx) => {
     const chain = chains.filter(chain => chain.name === chainName)[0]
     
     ctx.msgWait = msgWait
-    ctx.from = from
+    ctx.user = from
     ctx.address = address
     ctx.chain = chain
     ctx.editMessageText(ctx.i18n.t('audit'))

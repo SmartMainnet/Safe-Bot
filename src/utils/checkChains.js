@@ -1,4 +1,3 @@
-import 'dotenv/config'
 import Web3 from 'web3'
 import chains from './chains.js'
 

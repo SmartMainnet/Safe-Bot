@@ -1,4 +1,3 @@
-import 'dotenv/config'
 import Web3 from 'web3'
 
 const { ETH_RPC, BNB_RPC, MATIC_RPC, AVAX_RPC, FTM_RPC } = process.env

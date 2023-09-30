@@ -12,7 +12,7 @@ export const checkMember = async (ctx, next) => {
         next()
       } else {
         ctx.reply(
-          `To use the Bot, you must be a Member from [Smart Bots](https://t.me/${CHANNEL.replace('@', '')})`,
+          ctx.i18n.t('only_members', { CHANNEL }),
           { parse_mode: 'MARKDOWN' }
         )
       }

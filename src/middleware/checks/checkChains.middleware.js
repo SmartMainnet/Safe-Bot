@@ -35,7 +35,7 @@ export const checkChains = async (ctx, next) => {
         }
       )
     } else {
-      ctx.reply(ctx.i18n.t('warning'))
+      ctx.reply(ctx.i18n.t('only_contracts'))
     }
   } catch (e) {
     console.log(e)

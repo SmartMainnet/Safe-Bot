@@ -8,7 +8,7 @@ export const textMessage = composer.hears(
     const from = ctx.update.message.from
     const text = ctx.update.message.text
 
-    ctx.reply(ctx.i18n.t('warning'))
+    ctx.reply(ctx.i18n.t('only_contracts'))
 
     newCall(from.id, text, false)
   }

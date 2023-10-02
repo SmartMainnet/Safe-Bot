@@ -5,20 +5,17 @@
 </p>
 
 <h1 align="center">
-  Crypto Balance Checker Bot
+  Safe Crypto Bot
 </h1>
 
 <p align="center">
-  This is a Telegram bot for checking the balances of crypto wallets
+  This is a Telegram bot for audit contracts in blockchains (Ethereum, BSC, Polygon, Avalanche, Fantom)
 </p>
 
-<p align="center">
-  It checks the balance of addresses in blockchains (Ethereum, Binance Smart Chain, Polygon, Avalanche, Fantom)
-</p>
-
-<p align="center">
-  <img src="https://ie.wampi.ru/2023/02/08/crypto_balance_checker_bot.png" />
-</p>
+<details align="center">
+  <summary><h2>📱 Bot Screenshot</h2></summary>
+  <img src="https://i.postimg.cc/ZK1jvJ8q/Example.png" />
+</details>
 
 ## 🚀 Getting Started
 
@@ -26,9 +23,11 @@
 
 - Rename the `.env.example` file to `.env`
 
+- Add MongoDB URI to `MONGODB_URI` ( learn more [here](https://www.mongodb.com/docs/drivers/node/current/fundamentals/connection/connect) )
+
 - Add Telegram bot token to `BOT_TOKEN` ( get token [here](https://t.me/BotFather) )
 
-- Add MongoDB URI to `MONGODB_URI` ( learn more [here](https://www.mongodb.com/docs/drivers/node/current/fundamentals/connection/connect) )
+- Add Telegram channel or group username ( if necessary )
 
 ### Installing dependencies
 

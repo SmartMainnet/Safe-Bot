@@ -13,7 +13,7 @@
 </p>
 
 <details align="center">
-  <summary><h2>📱 Bot Screenshot</h2></summary>
+  <summary><strong>📱 Bot Screenshot</strong></summary>
   <img src="https://i.postimg.cc/ZK1jvJ8q/Example.png" />
 </details>
 

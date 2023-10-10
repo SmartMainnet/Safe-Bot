@@ -1,8 +1,8 @@
-import { Composer } from 'telegraf'
+import telegraf from 'telegraf'
 import chains from '../../utils/chains.js'
 import audit from '../../utils/audit.js'
 
-const composer = new Composer()
+const composer = new telegraf.Composer()
 
 export const buttonCallback = composer.action(async (data, ctx) => {
   try {

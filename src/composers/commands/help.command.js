@@ -1,6 +1,6 @@
-import { Composer } from 'telegraf'
+import telegraf from 'telegraf'
 
-const composer = new Composer()
+const composer = new telegraf.Composer()
 
 export const helpCommand = composer.command('help', async ctx => {
   try {

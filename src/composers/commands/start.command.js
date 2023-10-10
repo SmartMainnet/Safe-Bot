@@ -1,7 +1,7 @@
-import { Composer } from 'telegraf'
+import telegraf from 'telegraf'
 import { createUser } from '../../database/index.js'
 
-const composer = new Composer()
+const composer = new telegraf.Composer()
 
 export const startCommand = composer.command('start', async ctx => {
   try {

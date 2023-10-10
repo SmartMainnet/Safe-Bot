@@ -1,7 +1,7 @@
-import { Composer } from 'telegraf'
+import telegraf from 'telegraf'
 import { newCall } from '../../database/index.js'
 
-const composer = new Composer()
+const composer = new telegraf.Composer()
 
 export const textMessage = composer.hears(
   (msg, ctx) => {

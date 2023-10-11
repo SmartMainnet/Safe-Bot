@@ -21,6 +21,7 @@ const bot = new Telegraf(BOT_TOKEN)
 
 bot.use(i18nMiddleware)
 bot.use(limitMiddleware)
+
 bot.use(startCommand)
 bot.use(infoCommand)
 bot.use(helpCommand)

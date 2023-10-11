@@ -1,5 +1,6 @@
 import 'dotenv/config'
-import telegraf from 'telegraf'
+import Telegraf from 'telegraf'
+
 import {
   i18nMiddleware,
   limitMiddleware
@@ -15,7 +16,6 @@ import {
 import './database/connect/db.connect.js'
 
 const { BOT_TOKEN } = process.env
-const { Telegraf } = telegraf
 
 const bot = new Telegraf(BOT_TOKEN)
 

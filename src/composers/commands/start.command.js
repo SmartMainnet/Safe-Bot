@@ -1,23 +1,21 @@
-import Composer from 'telegraf'
+import { InputFile } from 'grammy'
 
 import { createUser } from '../../database/index.js'
 
-const composer = new Composer()
-
-export const startCommand = composer.command('start', async ctx => {
+export const startCommand = async ctx => {
   try {
     const from = ctx.update.message.from
-    await ctx.reply(ctx.i18n.t('welcome', { ctx }))
+    await ctx.reply(ctx.t('start', { first_name: ctx.me.first_name }))
 
     await ctx.reply(
-      ctx.i18n.t('info'),
+      ctx.t('info'),
       { disable_web_page_preview: true }
     )
 
     await ctx.replyWithPhoto(
-      { source: 'src/img/Example.png' },
+      new InputFile('./src/img/Example.png'),
       {
-        caption: ctx.i18n.t('help'),
+        caption: ctx.t('help'),
         parse_mode: 'MARKDOWN'
       }
     )
@@ -26,4 +24,4 @@ export const startCommand = composer.command('start', async ctx => {
   } catch (e) {
     console.log(e)
   }
-})
+}

@@ -23,19 +23,31 @@ export default async ctx => {
     const isRenounced = res.owner_address === '0x000000000000000000000000000000000000dead' || res.owner_address === '0x0000000000000000000000000000000000000000'
 
     const token = {
-      res,
+      name: res.token_name,
+      symbol: res.token_symbol,
+      chain: chain.name,
+      totalSupply,
       buyTax,
       sellTax,
-      totalSupply,
-      isRenounced,
-      chain: chain.name,
+      contractVerified: res.is_open_source ? 'Yes' : 'No ⚠️',
+      renouncedOwnership: isRenounced ? 'Yes' : 'No',
+      can_take_back_ownership: +res.can_take_back_ownership ? '⚠️ *Yes*' : '✅ *No*',
+      hidden_owner: +res.hidden_owner ? '⚠️ *Yes*' : '✅ *No*',
+      is_proxy: +res.is_proxy ? '⚠️ *Yes*' : '✅ *No*',
+      is_anti_whale: +res.is_anti_whale ? '⚠️ *Yes*' : '✅ *No*',
+      anti_whale_modifiable: +res.anti_whale_modifiable ? '⚠️ *Yes*' : '✅ *No*',
+      is_blacklisted: +res.is_blacklisted ? '⚠️ *Yes*' : '✅ *No*',
+      is_mintable: +res.is_mintable ? '⚠️ *Yes*' : '✅ *No*',
+      trading_cooldown: +res.trading_cooldown ? '⚠️ *Yes*' : '✅ *No*',
+      transfer_pausable: +res.transfer_pausable ? '⚠️ *Yes*' : '✅ *No*',
+      slippage_modifiable: +res.slippage_modifiable ? '⚠️ *Yes*' : '✅ *No*',
+      is_whitelisted: +res.is_whitelisted ? '⚠️ *Yes*' : '✅ *No*',
     }
 
-    ctx.telegram.editMessageText(
+    ctx.api.editMessageText(
       msgWait.chat.id,
       msgWait.message_id,
-      undefined,
-      ctx.i18n.t('audit_result', { token }),
+      ctx.t('audit_result', token),
       {
         parse_mode: 'MARKDOWN',
         disable_web_page_preview: true,
@@ -43,7 +55,7 @@ export default async ctx => {
       }
     )
 
-    newCall(from.id, address, true)
+    // newCall(from.id, address, true)
   } catch (e) {
     console.log(e)
   }

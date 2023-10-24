@@ -5,14 +5,14 @@ export const checkMember = async (ctx, next) => {
     const userId = ctx.update.message.from.id
   
     if (CHANNEL) {
-      const join = await ctx.telegram.getChatMember(CHANNEL, userId)
+      const join = await ctx.api.getChatMember(CHANNEL, userId)
       const isJoined = join.status !== 'left'
   
       if (isJoined) {
         next()
       } else {
         ctx.reply(
-          ctx.i18n.t('only_members', { CHANNEL }),
+          ctx.t('only_members', { CHANNEL }),
           { parse_mode: 'MARKDOWN' }
         )
       }

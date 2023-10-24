@@ -3,7 +3,7 @@ import getChains from '../../utils/getChains.js'
 
 export const checkChains = async (ctx, next) => {
   try {
-    const msgWait = await ctx.reply(ctx.i18n.t('checking'))
+    const msgWait = await ctx.reply(ctx.t('checking'))
     const message_id = ctx.update.message.message_id
     const from = ctx.update.message.from
     const address = ctx.update.message.text.toLowerCase()
@@ -14,19 +14,17 @@ export const checkChains = async (ctx, next) => {
       ctx.user = from
       ctx.address = address
       ctx.chain = chains[0]
-      ctx.telegram.editMessageText(
+      ctx.api.editMessageText(
         msgWait.chat.id,
         msgWait.message_id,
-        undefined,
-        ctx.i18n.t('audit')
+        ctx.t('audit')
       )
       next()
     } else if(chains.length > 1) {
-      ctx.telegram.editMessageText(
+      ctx.api.editMessageText(
         msgWait.chat.id,
         msgWait.message_id,
-        undefined,
-        ctx.i18n.t('chain_selection'),
+        ctx.t('chain_selection'),
         {
           parse_mode: 'MARKDOWN',
           reply_to_message_id: message_id,
@@ -35,7 +33,7 @@ export const checkChains = async (ctx, next) => {
         }
       )
     } else {
-      ctx.reply(ctx.i18n.t('only_contracts'))
+      ctx.reply(ctx.t('only_contracts'))
     }
   } catch (e) {
     console.log(e)

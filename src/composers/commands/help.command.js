@@ -1,17 +1,15 @@
-import Composer from 'telegraf'
+import { InputFile } from 'grammy'
 
-const composer = new Composer()
-
-export const helpCommand = composer.command('help', async ctx => {
+export const helpCommand = async ctx => {
   try {
     await ctx.replyWithPhoto(
-      { source: 'src/img/Example.png' },
+      new InputFile('./src/img/Example.png'),
       {
-        caption: ctx.i18n.t('help'),
+        caption: ctx.t('help'),
         parse_mode: 'MARKDOWN'
       }
     )
   } catch (e) {
     console.log(e)
   }
-})
+}

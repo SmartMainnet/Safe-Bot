@@ -1,5 +1,4 @@
-import chains from '../../utils/chains.js'
-import audit from '../../utils/audit.js'
+import { audit, chainList } from '../../utils/index.js'
 
 export const buttonCallback = async ctx => {
   try {
@@ -8,7 +7,7 @@ export const buttonCallback = async ctx => {
     const from = ctx.update.callback_query.from
     const address = data.split(' ')[1]
     const chainName = data.split(' ')[0]
-    const chain = chains.filter(chain => chain.name === chainName)[0]
+    const chain = chainList.filter(chain => chain.name === chainName)[0]
     
     ctx.msgWait = msgWait
     ctx.user = from

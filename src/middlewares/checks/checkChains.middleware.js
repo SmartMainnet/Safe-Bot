@@ -1,5 +1,5 @@
-import { checkChainsInlineKeyboard } from '../../keyboards/index.js'
-import getChains from '../../utils/getChains.js'
+import { checkChainsInlineKeyboard } from '../../keyboards/inline_keyboard/index.js'
+import { getChains } from '../../utils/index.js'
 
 export const checkChains = async (ctx, next) => {
   try {

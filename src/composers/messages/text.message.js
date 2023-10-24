@@ -1,4 +1,4 @@
-import { newCall } from '../../database/index.js'
+import { newCall } from '../../database/methods/index.js'
 
 export const textMessage = ctx => {
   const from = ctx.update.message.from

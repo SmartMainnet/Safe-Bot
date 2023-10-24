@@ -1,6 +1,0 @@
-export * from './commands/start.command.js'
-export * from './commands/info.command.js'
-export * from './commands/help.command.js'
-export * from './messages/address.message.js'
-export * from './messages/text.message.js'
-export * from './callbacks/button.callback.js'

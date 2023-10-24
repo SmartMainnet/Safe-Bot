@@ -8,7 +8,7 @@ const web3MATIC = new Web3(MATIC_RPC)
 const web3AVAX = new Web3(AVAX_RPC)
 const web3FTM = new Web3(FTM_RPC)
 
-export default async address => {
+export const getChains = async address => {
   const isContract = {
     ETH: await web3ETH.eth.getCode(address) !== '0x',
     BNB: await web3BNB.eth.getCode(address) !== '0x',

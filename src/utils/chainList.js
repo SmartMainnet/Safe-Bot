@@ -1,4 +1,4 @@
-export default [
+export const chainList = [
   {
     id: 1,
     name: 'ETH',

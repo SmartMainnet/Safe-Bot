@@ -1,5 +1,3 @@
-import audit from '../../utils/audit.js'
-
-// const address = /^(0x)?[0-9a-f]{40}$/i
+import { audit } from '../../utils/index.js'
 
 export const addressMessage = async ctx => audit(ctx)

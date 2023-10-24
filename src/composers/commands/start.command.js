@@ -1,6 +1,6 @@
 import { InputFile } from 'grammy'
 
-import { createUser } from '../../database/index.js'
+import { createUser } from '../../database/methods/index.js'
 
 export const startCommand = async ctx => {
   try {

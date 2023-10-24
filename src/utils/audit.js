@@ -1,9 +1,9 @@
 import axios from 'axios'
 
-import { newCall } from '../database/index.js'
-import { auditInlineKeyboard } from '../keyboards/index.js'
+import { newCall } from '../database/methods/index.js'
+import { auditInlineKeyboard } from '../keyboards/inline_keyboard/index.js'
 
-export default async ctx => {
+export const audit = async ctx => {
   try {
     const msgWait = ctx.msgWait
     const address = ctx.address

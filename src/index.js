@@ -3,9 +3,9 @@ import { Bot } from 'grammy'
 
 import { i18nMiddleware, limitMiddleware } from './middlewares/plugins/index.js'
 import { checkChains, checkMember } from './middlewares/checks/index.js'
-import { helpCommand, infoCommand, startCommand } from './composers/commands/index.js'
-import { addressMessage, textMessage } from './composers/messages/index.js'
-import { buttonCallback } from './composers/callbacks/index.js'
+import { helpCommand, infoCommand, startCommand } from './handlers/commands/index.js'
+import { addressMessage, textMessage } from './handlers/messages/index.js'
+import { buttonCallback } from './handlers/callbacks/index.js'
 import './database/connect/db.connect.js'
 
 const { BOT_TOKEN } = process.env

@@ -55,7 +55,7 @@ export const audit = async ctx => {
       }
     )
 
-    // newCall(from.id, address, true)
+    newCall(from.id, address)
   } catch (e) {
     console.log(e)
   }

@@ -24,10 +24,6 @@ const userSchema = new Schema({
     default: Date.now
   },
   calls: [{
-    successful: {
-      type: Boolean,
-      required: true
-    },
     call: {
       type: String,
       required: true

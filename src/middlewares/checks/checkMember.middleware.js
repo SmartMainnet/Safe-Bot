@@ -12,7 +12,7 @@ export const checkMember = async (ctx, next) => {
         next()
       } else {
         ctx.reply(
-          ctx.t('only_members', { CHANNEL }),
+          ctx.t('only_members', { CHANNEL: CHANNEL.replace('@', '') }),
           { parse_mode: 'MARKDOWN' }
         )
       }

@@ -9,7 +9,7 @@ help =
   Enter the contract address to audit it
   Example: `0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984`
 only_members =
-  To use the Bot, you must be a Member from [Smart Bots](https://t.me/${CHANNEL.replace('@', '')})
+  To use the Bot, you must be a Member from [Smart Bots](https://t.me/{ $CHANNEL })
 only_contracts =
   ⚠️ Only contract addresses!
 limit =

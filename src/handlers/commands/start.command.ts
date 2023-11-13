@@ -1,10 +1,11 @@
 import { InputFile } from 'grammy'
 
-import { createUser } from '../../database/methods/index.js'
+import { createUser } from '../../database/methods/index.ts'
+import { ContextType } from '../../types/index.ts'
 
-export const startCommand = async ctx => {
+export const startCommand = async (ctx: ContextType) => {
   try {
-    const from = ctx.update.message.from
+    const from = ctx.update.message?.from
     await ctx.reply(ctx.t('start', { first_name: ctx.me.first_name }))
 
     await ctx.reply(
@@ -16,7 +17,7 @@ export const startCommand = async ctx => {
       new InputFile('./src/images/Example.png'),
       {
         caption: ctx.t('help'),
-        parse_mode: 'MARKDOWN'
+        parse_mode: 'Markdown'
       }
     )
 

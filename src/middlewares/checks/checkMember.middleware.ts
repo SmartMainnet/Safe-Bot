@@ -1,8 +1,10 @@
+import { ContextType } from "../../types/index.ts"
+
 const { CHANNEL } = process.env
 
-export const checkMember = async (ctx, next) => {
+export const checkMember = async (ctx: ContextType, next: () => void) => {
   try {
-    const userId = ctx.update.message.from.id
+    const userId = ctx.update.message?.from.id || 0
   
     if (CHANNEL) {
       const join = await ctx.api.getChatMember(CHANNEL, userId)
@@ -13,7 +15,7 @@ export const checkMember = async (ctx, next) => {
       } else {
         ctx.reply(
           ctx.t('only_members', { CHANNEL: CHANNEL.replace('@', '') }),
-          { parse_mode: 'MARKDOWN' }
+          { parse_mode: 'Markdown' }
         )
       }
     } else {

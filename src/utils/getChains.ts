@@ -2,13 +2,18 @@ import Web3 from 'web3'
 
 const { ETH_RPC, BNB_RPC, MATIC_RPC, AVAX_RPC, FTM_RPC } = process.env
 
+// @ts-ignore
 const web3ETH = new Web3(ETH_RPC)
+// @ts-ignore
 const web3BNB = new Web3(BNB_RPC)
+// @ts-ignore
 const web3MATIC = new Web3(MATIC_RPC)
+// @ts-ignore
 const web3AVAX = new Web3(AVAX_RPC)
+// @ts-ignore
 const web3FTM = new Web3(FTM_RPC)
 
-export const getChains = async address => {
+export const getChains = async (address: String) => {
   const isContract = {
     ETH: await web3ETH.eth.getCode(address) !== '0x',
     BNB: await web3BNB.eth.getCode(address) !== '0x',

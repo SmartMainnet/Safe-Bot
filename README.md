@@ -14,7 +14,7 @@
 
 <details align="center">
   <summary><strong>📱 Bot Screenshot</strong></summary>
-  <img src="https://i.postimg.cc/ZK1jvJ8q/Example.png" />
+  <img src="https://i.postimg.cc/MZjxGRyp/Example.png" />
 </details>
 
 ## 🚀 Getting Started

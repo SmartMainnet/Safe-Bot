@@ -1,4 +1,6 @@
-export const infoCommand = async ctx => {
+import { ContextType } from "../../types/index.ts"
+
+export const infoCommand = async (ctx: ContextType) => {
   try {
     await ctx.reply(
       ctx.t('info'),

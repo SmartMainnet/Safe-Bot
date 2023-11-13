@@ -1,14 +1,15 @@
 import axios from 'axios'
 
-import { newCall } from '../database/methods/index.js'
-import { auditInlineKeyboard } from '../keyboards/inline_keyboard/index.js'
+import { newCall } from '../database/methods/index.ts'
+import { auditInlineKeyboard } from '../keyboards/inline_keyboard/index.ts'
+import { ContextType } from '../types/index.ts'
 
-export const audit = async ctx => {
+export const audit = async (ctx: ContextType) => {
   try {
-    const msgWait = ctx.msgWait
-    const address = ctx.address
-    const chain = ctx.chain
-    const from = ctx.from
+    const msgWait = ctx.config.msgWait
+    const address = ctx.config.address
+    const chain = ctx.config.chain
+    const from = ctx.config.user
 
     const resGoPlus = await axios.get(`https://api.gopluslabs.io/api/v1/token_security/${chain.id}?contract_addresses=${address}`)
     const res = resGoPlus.data.result[address]
@@ -49,7 +50,7 @@ export const audit = async ctx => {
       msgWait.message_id,
       ctx.t('audit_result', token),
       {
-        parse_mode: 'MARKDOWN',
+        parse_mode: 'Markdown',
         disable_web_page_preview: true,
         reply_markup: auditInlineKeyboard(chain, address)
       }

@@ -1,6 +1,6 @@
 import { InlineKeyboard } from "grammy"
 
-export const auditInlineKeyboard = (chain, address) => {
+export const auditInlineKeyboard = (chain: any, address: String) => {
   return new InlineKeyboard()
     .url(
       'Audit',

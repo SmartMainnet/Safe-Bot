@@ -1,6 +1,6 @@
-import { UserModel } from '../models/index.js'
+import { UserModel } from '../models/index.ts'
 
-export const createUser = async from => {
+export const createUser = async (from: any) => {
   const userFromDb = await UserModel.findOne({ id: from.id })
 
   if (!userFromDb) {

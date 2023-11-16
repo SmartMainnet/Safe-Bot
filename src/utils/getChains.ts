@@ -13,7 +13,7 @@ const web3AVAX = new Web3(AVAX_RPC)
 // @ts-ignore
 const web3FTM = new Web3(FTM_RPC)
 
-export const getChains = async (address: String) => {
+export const getChains = async (address: string) => {
   const isContract = {
     ETH: await web3ETH.eth.getCode(address) !== '0x',
     BNB: await web3BNB.eth.getCode(address) !== '0x',

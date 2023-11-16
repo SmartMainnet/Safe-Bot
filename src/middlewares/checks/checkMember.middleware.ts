@@ -1,10 +1,12 @@
-import { ContextType } from "../../types/index.ts"
+import { NextFunction } from 'grammy'
+
+import { ContextType } from '../../types/index.ts'
 
 const { CHANNEL } = process.env
 
-export const checkMember = async (ctx: ContextType, next: () => void) => {
+export const checkMember = async (ctx: ContextType, next: NextFunction) => {
   try {
-    const userId = ctx.update.message?.from.id || 0
+    const userId = ctx.update.message!.from.id
   
     if (CHANNEL) {
       const join = await ctx.api.getChatMember(CHANNEL, userId)

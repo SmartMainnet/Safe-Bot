@@ -1,6 +1,8 @@
-import { InlineKeyboard } from "grammy"
+import { InlineKeyboard } from 'grammy'
 
-export const auditInlineKeyboard = (chain: any, address: String) => {
+import { IChain } from '../../types/index.ts'
+
+export const auditInlineKeyboard = (chain: IChain, address: string) => {
   return new InlineKeyboard()
     .url(
       'Audit',

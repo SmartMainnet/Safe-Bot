@@ -5,7 +5,8 @@ import { ContextType } from '../../types/index.ts'
 
 export const startCommand = async (ctx: ContextType) => {
   try {
-    const from = ctx.update.message?.from
+    const from = ctx.update.message!.from
+
     await ctx.reply(ctx.t('start', { first_name: ctx.me.first_name }))
 
     await ctx.reply(

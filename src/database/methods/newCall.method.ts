@@ -1,6 +1,6 @@
 import { UserModel } from '../models/index.ts'
 
-export const newCall = async (id: Number, address: String) => {
+export const newCall = async (id: number, address: string) => {
   UserModel.findOneAndUpdate(
     { id },
     {

@@ -1,7 +1,8 @@
 import { InlineKeyboard } from 'grammy'
+import { IChain } from '../../types/index.ts'
 
-export const checkChainsInlineKeyboard = (chains: any, address: String) => {
-  const buttonRow = chains.map((chain: any) =>
+export const checkChainsInlineKeyboard = (chains: IChain[], address: string) => {
+  const buttonRow = chains.map((chain: IChain) =>
     InlineKeyboard.text(chain.name, `${chain.name} ${address}`)
   )
   return InlineKeyboard.from([buttonRow])

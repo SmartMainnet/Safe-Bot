@@ -1,17 +1,19 @@
+import { User } from 'grammy/types'
+
 import { UserModel } from '../models/index.ts'
 
-export const createUser = async (from: any) => {
-  const userFromDb = await UserModel.findOne({ id: from.id })
+export const createUser = async (user: User) => {
+  const userFromDb = await UserModel.findOne({ id: user.id })
 
   if (!userFromDb) {
-    const user = new UserModel({
-      id: from.id,
-      username: from.username,
-      first_name: from.first_name,
-      last_name: from.last_name
+    const User = new UserModel({
+      id: user.id,
+      username: user.username,
+      first_name: user.first_name,
+      last_name: user.last_name
     })
   
-    user
+    User
       .save()
       .then(res => console.log(res))
       .catch(e => console.log(e))

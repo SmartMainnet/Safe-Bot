@@ -11,7 +11,7 @@ import './database/connect/db.connect.ts'
 
 const { BOT_TOKEN } = process.env
 
-const bot = new Bot<ContextType>(BOT_TOKEN || '')
+const bot = new Bot<ContextType>(BOT_TOKEN!)
 
 // plugins
 bot.use(i18nMiddleware)

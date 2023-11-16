@@ -1,19 +1,20 @@
-import { checkChainsInlineKeyboard } from '../../keyboards/inline_keyboard/index.ts'
-import { ContextType } from '../../types/index.ts'
-import { getChains } from '../../utils/index.ts'
+import { NextFunction } from 'grammy'
 
-export const checkChains = async (ctx: ContextType, next: () => void) => {
+import { checkChainsInlineKeyboard } from '../../keyboards/inline_keyboard/index.ts'
+import { getChains } from '../../utils/index.ts'
+import { ContextType } from '../../types/index.ts'
+
+export const checkChains = async (ctx: ContextType, next: NextFunction) => {
   try {
     const msgWait = await ctx.reply(ctx.t('checking'))
-    // const message_id = ctx.update.message?.message_id
-    const from = ctx.update.message?.from
-    const address = ctx.update.message?.text?.toLowerCase() || ''
+    const user = ctx.update.message!.from
+    const address = ctx.update.message!.text!.toLowerCase()
     const chains = (await getChains(address)).filter(chain => chain.status)
 
     if (chains.length === 1) {
       ctx.config = {
         msgWait: msgWait,
-        user: from,
+        user: user,
         address: address,
         chain: chains[0]
       }
@@ -30,7 +31,6 @@ export const checkChains = async (ctx: ContextType, next: () => void) => {
         ctx.t('chain_selection'),
         {
           parse_mode: 'Markdown',
-          // reply_to_message_id: message_id,
           disable_web_page_preview: true,
           reply_markup: checkChainsInlineKeyboard(chains, address)
         }

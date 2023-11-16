@@ -9,7 +9,7 @@ export const audit = async (ctx: ContextType) => {
     const msgWait = ctx.config.msgWait
     const address = ctx.config.address
     const chain = ctx.config.chain
-    const from = ctx.config.user
+    const user = ctx.config.user
 
     const resGoPlus = await axios.get(`https://api.gopluslabs.io/api/v1/token_security/${chain.id}?contract_addresses=${address}`)
     const res = resGoPlus.data.result[address]
@@ -56,7 +56,7 @@ export const audit = async (ctx: ContextType) => {
       }
     )
 
-    newCall(from.id, address)
+    newCall(user.id, address)
   } catch (e) {
     console.log(e)
   }

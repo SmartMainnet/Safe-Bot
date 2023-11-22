@@ -1,25 +1,20 @@
-import Web3 from 'web3'
+import { JsonRpcProvider } from 'ethers'
 
 const { ETH_RPC, BNB_RPC, MATIC_RPC, AVAX_RPC, FTM_RPC } = process.env
 
-// @ts-ignore
-const web3ETH = new Web3(ETH_RPC)
-// @ts-ignore
-const web3BNB = new Web3(BNB_RPC)
-// @ts-ignore
-const web3MATIC = new Web3(MATIC_RPC)
-// @ts-ignore
-const web3AVAX = new Web3(AVAX_RPC)
-// @ts-ignore
-const web3FTM = new Web3(FTM_RPC)
+const providerETH = new JsonRpcProvider(ETH_RPC)
+const providerBNB = new JsonRpcProvider(BNB_RPC)
+const providerMATIC = new JsonRpcProvider(MATIC_RPC)
+const providerAVAX = new JsonRpcProvider(AVAX_RPC)
+const providerFTM = new JsonRpcProvider(FTM_RPC)
 
 export const getChains = async (address: string) => {
   const isContract = {
-    ETH: await web3ETH.eth.getCode(address) !== '0x',
-    BNB: await web3BNB.eth.getCode(address) !== '0x',
-    MATIC: await web3MATIC.eth.getCode(address) !== '0x',
-    AVAX: await web3AVAX.eth.getCode(address) !== '0x',
-    FTM: await web3FTM.eth.getCode(address) !== '0x'
+    ETH: await providerETH.getCode(address) !== '0x',
+    BNB: await providerBNB.getCode(address) !== '0x',
+    MATIC: await providerMATIC.getCode(address) !== '0x',
+    AVAX: await providerAVAX.getCode(address) !== '0x',
+    FTM: await providerFTM.getCode(address) !== '0x'
   }
 
   const chains = [

@@ -1,13 +1,13 @@
 import 'dotenv/config'
 import { Bot } from 'grammy'
 
-import { i18nMiddleware, limitMiddleware } from './middlewares/plugins/index.ts'
-import { checkChains, checkMember } from './middlewares/checks/index.ts'
-import { helpCommand, infoCommand, startCommand } from './handlers/commands/index.ts'
-import { addressMessage, textMessage } from './handlers/messages/index.ts'
-import { buttonCallback } from './handlers/callbacks/index.ts'
-import { ContextType } from './types/index.ts'
-import './database/connect/db.connect.ts'
+import { i18nMiddleware, limitMiddleware } from './middlewares/plugins/index.js'
+import { checkChains, checkMember } from './middlewares/checks/index.js'
+import { helpCommand, infoCommand, startCommand } from './handlers/commands/index.js'
+import { addressMessage, textMessage } from './handlers/messages/index.js'
+import { buttonCallback } from './handlers/callbacks/index.js'
+import { ContextType } from './types/index.js'
+import './database/connect/db.connect.js'
 
 const { BOT_TOKEN } = process.env
 

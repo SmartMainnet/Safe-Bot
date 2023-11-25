@@ -1,6 +1,6 @@
 import { NextFunction } from 'grammy'
 
-import { ContextType } from '../../types/index.ts'
+import { ContextType } from '../../types/index.js'
 
 const { CHANNEL } = process.env
 

@@ -1,8 +1,8 @@
 import { NextFunction } from 'grammy'
 
-import { checkChainsInlineKeyboard } from '../../keyboards/inline_keyboard/index.ts'
-import { getChains } from '../../utils/index.ts'
-import { ContextType } from '../../types/index.ts'
+import { checkChainsInlineKeyboard } from '../../keyboards/inline_keyboard/index.js'
+import { getChains } from '../../utils/index.js'
+import { ContextType } from '../../types/index.js'
 
 export const checkChains = async (ctx: ContextType, next: NextFunction) => {
   try {

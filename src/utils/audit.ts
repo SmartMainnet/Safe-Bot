@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-import { newCall } from '../database/methods/index.ts'
-import { auditInlineKeyboard } from '../keyboards/inline_keyboard/index.ts'
-import { ContextType } from '../types/index.ts'
+import { newCall } from '../database/methods/index.js'
+import { auditInlineKeyboard } from '../keyboards/inline_keyboard/index.js'
+import { ContextType } from '../types/index.js'
 
 export const audit = async (ctx: ContextType) => {
   try {

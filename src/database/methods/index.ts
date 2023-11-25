@@ -1,2 +1,2 @@
-export * from './createUser.method.ts'
-export * from './newCall.method.ts'
+export * from './createUser.method.js'
+export * from './newCall.method.js'

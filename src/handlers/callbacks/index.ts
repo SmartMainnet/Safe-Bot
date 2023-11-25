@@ -1,1 +1,1 @@
-export * from './button.callback.ts'
+export * from './button.callback.js'

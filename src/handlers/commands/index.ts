@@ -1,3 +1,3 @@
-export * from './start.command.ts'
-export * from './info.command.ts'
-export * from './help.command.ts'
+export * from './start.command.js'
+export * from './info.command.js'
+export * from './help.command.js'

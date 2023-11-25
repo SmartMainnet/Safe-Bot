@@ -1,2 +1,2 @@
-export * from './locales.middleware.ts'
-export * from './limit.middleware.ts'
+export * from './locales.middleware.js'
+export * from './limit.middleware.js'

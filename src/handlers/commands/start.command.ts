@@ -1,7 +1,7 @@
 import { InputFile } from 'grammy'
 
-import { createUser } from '../../database/methods/index.ts'
-import { ContextType } from '../../types/index.ts'
+import { createUser } from '../../database/methods/index.js'
+import { ContextType } from '../../types/index.js'
 
 export const startCommand = async (ctx: ContextType) => {
   try {

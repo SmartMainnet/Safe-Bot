@@ -1,5 +1,5 @@
-import { audit, chainList } from '../../utils/index.ts'
-import { ContextType } from '../../types/index.ts'
+import { audit, chainList } from '../../utils/index.js'
+import { ContextType } from '../../types/index.js'
 
 export const buttonCallback = async (ctx: ContextType) => {
   try {

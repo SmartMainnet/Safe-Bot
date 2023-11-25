@@ -1,6 +1,6 @@
 import { InputFile } from 'grammy'
 
-import { ContextType } from '../../types/index.ts'
+import { ContextType } from '../../types/index.js'
 
 export const helpCommand = async (ctx: ContextType) => {
   try {

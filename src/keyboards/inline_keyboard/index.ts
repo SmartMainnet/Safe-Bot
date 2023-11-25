@@ -1,2 +1,2 @@
-export * from './audit.inline_keyboard.ts'
-export * from './checkChains.inline_keyboard.ts'
+export * from './audit.inline_keyboard.js'
+export * from './checkChains.inline_keyboard.js'

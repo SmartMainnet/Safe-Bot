@@ -1,4 +1,4 @@
-import { ContextType } from '../../types/index.ts'
+import { ContextType } from '../../types/index.js'
 
 export const infoCommand = async (ctx: ContextType) => {
   try {
